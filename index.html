@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="apple-touch-icon" href="icon2.png">
+
+    <link rel="apple-touch-icon" href="icon.png">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
@@ -396,6 +398,50 @@
 
 
         /* =========================
+           WASH OPTIONS
+        ========================= */
+
+        .wash-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+
+            margin-bottom: 14px;
+        }
+
+        .wash-option {
+            padding: 13px 11px;
+
+            border-radius: 15px;
+
+            background: white;
+
+            border: 1px solid #dededc;
+        }
+
+        .wash-option-title {
+            margin-bottom: 5px;
+
+            font-size: 16px;
+            font-weight: 750;
+        }
+
+        .wash-option-time {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.35;
+        }
+
+        .wash-option.early {
+            border-color: #cfcfcf;
+        }
+
+        .wash-option.late {
+            border-color: #cfcfcf;
+        }
+
+
+        /* =========================
            MOBILE
         ========================= */
 
@@ -425,6 +471,14 @@
 
             .section-title {
                 font-size: 22px;
+            }
+
+            .wash-option {
+                padding: 12px 9px;
+            }
+
+            .wash-option-title {
+                font-size: 15px;
             }
         }
     </style>
@@ -536,7 +590,6 @@
                 Стирка длится
             </label>
 
-
             <div class="duration-row">
 
                 <div class="duration-field">
@@ -592,14 +645,49 @@
         >
 
             <div class="result-label">
-                Поставь отсрочку
+                Варианты отсрочки
             </div>
 
-            <div
-                class="result-main"
-                id="washDelay"
-            >
-                —
+
+            <div class="wash-options">
+
+                <div class="wash-option early">
+
+                    <div
+                        class="wash-option-title"
+                        id="washDelayEarly"
+                    >
+                        —
+                    </div>
+
+                    <div
+                        class="wash-option-time"
+                        id="washFinishEarly"
+                    >
+                        —
+                    </div>
+
+                </div>
+
+
+                <div class="wash-option late">
+
+                    <div
+                        class="wash-option-title"
+                        id="washDelayLate"
+                    >
+                        —
+                    </div>
+
+                    <div
+                        class="wash-option-time"
+                        id="washFinishLate"
+                    >
+                        —
+                    </div>
+
+                </div>
+
             </div>
 
 
@@ -610,19 +698,6 @@
                 </span>
 
                 <span id="washDurationResult">
-                    —
-                </span>
-
-            </div>
-
-
-            <div class="result-row">
-
-                <span>
-                    Закончит примерно
-                </span>
-
-                <span id="washFinish">
                     —
                 </span>
 
@@ -643,9 +718,9 @@
 
 
             <div class="hint">
-                Отсрочка устанавливается целыми часами.
-                Расчёт выбирает максимальную отсрочку,
-                при которой стирка не закончится позже цели.
+                Машина принимает отсрочку только
+                целыми часами. Первый вариант —
+                немного раньше, второй — немного позже.
             </div>
 
         </div>
@@ -725,8 +800,12 @@
         </div>
 
 
-        <div class="hint" style="margin-top:-5px; margin-bottom:17px;">
-            Закладываем дополнительный запас: <b>30 минут</b>
+        <div
+            class="hint"
+            style="margin-top:-5px; margin-bottom:17px;"
+        >
+            Закладываем дополнительный запас:
+            <b>30 минут</b>
         </div>
 
 
@@ -1192,47 +1271,88 @@ function calculateWash() {
 
     if (exactDelay < 0) {
 
-        document.getElementById("washDelay")
+        document.getElementById("washDelayEarly")
             .textContent =
             "Не успеет";
 
-        document.getElementById("washFinish")
+        document.getElementById("washFinishEarly")
+            .textContent =
+            "Даже при запуске сейчас";
+
+        document.getElementById("washDelayLate")
             .textContent =
             "Запусти сейчас";
+
+        document.getElementById("washFinishLate")
+            .textContent =
+            "Стирка закончится после цели";
 
         return;
     }
 
 
     /*
-       Стиральная машина:
-       отсрочка только целыми часами.
+       Машина принимает отсрочку только
+       целыми часами.
 
-       Берём максимальное количество
-       полных часов, которое помещается
-       до желаемого окончания.
+       Показываем ДВА ближайших варианта:
+
+       Например:
+       точный расчёт = 2 ч 25 мин
+
+       2 ч → раньше цели
+       3 ч → позже цели
     */
 
-    const delayHours =
+
+    const lowerHours =
         Math.floor(exactDelay / 60);
 
 
-    const actualFinish =
+    const upperHours =
+        lowerHours + 1;
+
+
+    const lowerDelayMinutes =
+        lowerHours * 60;
+
+
+    const upperDelayMinutes =
+        upperHours * 60;
+
+
+    const lowerFinish =
         now
-        + delayHours * 60
+        + lowerDelayMinutes
         + duration;
 
 
-    document.getElementById("washDelay")
+    const upperFinish =
+        now
+        + upperDelayMinutes
+        + duration;
+
+
+    document.getElementById("washDelayEarly")
         .textContent =
-        delayHours === 0
+        lowerHours === 0
             ? "Без отсрочки"
-            : `${delayHours} ч`;
+            : `${lowerHours} ч`;
 
 
-    document.getElementById("washFinish")
+    document.getElementById("washFinishEarly")
         .textContent =
-        minutesToTime(actualFinish);
+        `Закончит в ${minutesToTime(lowerFinish)}`;
+
+
+    document.getElementById("washDelayLate")
+        .textContent =
+        `${upperHours} ч`;
+
+
+    document.getElementById("washFinishLate")
+        .textContent =
+        `Закончит в ${minutesToTime(upperFinish)}`;
 }
 
 
@@ -1355,12 +1475,6 @@ function calculateDish() {
         .textContent =
         targetValue;
 
-
-    /*
-       Если даже отсрочка 3 часа
-       не помещается, проверяем,
-       успеет ли машина без отсрочки.
-    */
 
     if (selectedDelay === null) {
 
