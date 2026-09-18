@@ -2,8 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Домашний таймер</title>
 
@@ -19,6 +18,8 @@
         body {
             margin: 0;
             min-height: 100vh;
+            background: #f5f5f3;
+            color: #171717;
 
             font-family:
                 -apple-system,
@@ -27,9 +28,6 @@
                 "SF Pro Text",
                 Arial,
                 sans-serif;
-
-            background: #f5f5f3;
-            color: #171717;
 
             -webkit-font-smoothing: antialiased;
         }
@@ -40,6 +38,10 @@
             font: inherit;
         }
 
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
         .app {
             width: 100%;
             max-width: 560px;
@@ -48,22 +50,18 @@
             padding:
                 calc(20px + env(safe-area-inset-top))
                 16px
-                calc(32px + env(safe-area-inset-bottom));
+                calc(35px + env(safe-area-inset-bottom));
         }
 
 
-        /* ================================
+        /* =========================
            HEADER
-        ================================= */
-
-        .header {
-            margin-bottom: 18px;
-        }
+        ========================= */
 
         .title {
             margin: 0;
 
-            font-size: clamp(29px, 8vw, 36px);
+            font-size: 32px;
             line-height: 1.05;
             font-weight: 800;
             letter-spacing: -1.2px;
@@ -72,20 +70,18 @@
         .subtitle {
             margin: 7px 0 0;
 
+            color: #858585;
             font-size: 15px;
             line-height: 1.35;
-
-            color: #858585;
         }
 
 
-        /* ================================
+        /* =========================
            CLOCK
-        ================================= */
+        ========================= */
 
         .clock {
             margin-top: 17px;
-
             padding: 17px 18px 19px;
 
             border-radius: 22px;
@@ -99,27 +95,24 @@
         .clock-label {
             margin-bottom: 5px;
 
+            color: #a5a5a5;
             font-size: 11px;
             font-weight: 600;
-
             letter-spacing: 1.4px;
             text-transform: uppercase;
-
-            color: #a5a5a5;
         }
 
         .clock-time {
             font-size: 40px;
             line-height: 1;
-
             font-weight: 750;
             letter-spacing: -1px;
         }
 
 
-        /* ================================
+        /* =========================
            TABS
-        ================================= */
+        ========================= */
 
         .tabs {
             display: grid;
@@ -127,60 +120,50 @@
 
             gap: 4px;
 
+            margin: 18px 0 14px;
             padding: 5px;
-            margin-bottom: 14px;
 
             background: #e8e8e6;
-
             border-radius: 17px;
         }
 
         .tab {
+            height: 48px;
             min-width: 0;
 
-            height: 48px;
-
-            padding: 0 4px;
+            padding: 0 3px;
 
             border: 0;
             border-radius: 13px;
 
             background: transparent;
-
-            color: #7c7c7c;
+            color: #777;
 
             font-size: 14px;
             font-weight: 650;
 
-            white-space: nowrap;
-
             cursor: pointer;
-
-            -webkit-tap-highlight-color: transparent;
         }
 
         .tab.active {
             background: white;
             color: #171717;
 
-            box-shadow:
-                0 2px 8px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
 
-        /* ================================
+        /* =========================
            CARD
-        ================================= */
+        ========================= */
 
         .card {
-            background: white;
-
-            border-radius: 24px;
-
             padding: 21px 18px;
 
-            box-shadow:
-                0 5px 22px rgba(0, 0, 0, 0.045);
+            background: white;
+            border-radius: 24px;
+
+            box-shadow: 0 5px 22px rgba(0, 0, 0, 0.045);
         }
 
         .hidden {
@@ -192,7 +175,6 @@
 
             font-size: 23px;
             line-height: 1.15;
-
             font-weight: 780;
             letter-spacing: -0.5px;
         }
@@ -201,15 +183,14 @@
             margin: 7px 0 21px;
 
             color: #858585;
-
             font-size: 14px;
             line-height: 1.4;
         }
 
 
-        /* ================================
-           FIELDS
-        ================================= */
+        /* =========================
+           INPUTS
+        ========================= */
 
         .field {
             margin-bottom: 17px;
@@ -235,7 +216,6 @@
             border-radius: 15px;
 
             background: #fafafa;
-
             color: #171717;
 
             font-size: 17px;
@@ -252,14 +232,13 @@
         }
 
 
-        /* ================================
+        /* =========================
            DURATION
-        ================================= */
+        ========================= */
 
         .duration-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-
             gap: 10px;
         }
 
@@ -279,18 +258,16 @@
 
             transform: translateY(-50%);
 
-            color: #8a8a8a;
-
+            color: #888;
             font-size: 14px;
-            font-weight: 500;
 
             pointer-events: none;
         }
 
 
-        /* ================================
+        /* =========================
            SELECT
-        ================================= */
+        ========================= */
 
         .select-wrap {
             position: relative;
@@ -300,14 +277,12 @@
             content: "⌄";
 
             position: absolute;
-
             right: 15px;
             top: 50%;
 
             transform: translateY(-55%);
 
             color: #777;
-
             font-size: 18px;
 
             pointer-events: none;
@@ -318,15 +293,18 @@
         }
 
 
-        /* ================================
+        /* =========================
            BUTTON
-        ================================= */
+        ========================= */
 
         .calculate {
+            display: block;
+
             width: 100%;
             height: 54px;
 
-            margin-top: 1px;
+            margin: 2px 0 0;
+            padding: 0;
 
             border: 0;
             border-radius: 16px;
@@ -339,22 +317,18 @@
 
             cursor: pointer;
 
-            transition:
-                transform 0.08s ease,
-                opacity 0.15s ease;
-
-            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .calculate:active {
             transform: scale(0.985);
-            opacity: 0.9;
         }
 
 
-        /* ================================
+        /* =========================
            RESULT
-        ================================= */
+        ========================= */
 
         .result {
             display: none;
@@ -375,7 +349,6 @@
             margin-bottom: 4px;
 
             color: #777;
-
             font-size: 13px;
         }
 
@@ -384,7 +357,6 @@
 
             font-size: 29px;
             line-height: 1.1;
-
             font-weight: 800;
             letter-spacing: -0.6px;
         }
@@ -417,15 +389,14 @@
             margin-top: 12px;
 
             color: #888;
-
             font-size: 12.5px;
             line-height: 1.45;
         }
 
 
-        /* ================================
+        /* =========================
            MOBILE
-        ================================= */
+        ========================= */
 
         @media (max-width: 390px) {
 
@@ -455,7 +426,6 @@
                 font-size: 22px;
             }
         }
-
     </style>
 </head>
 
@@ -465,46 +435,41 @@
 <div class="app">
 
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
+    <!-- HEADER -->
 
-    <header class="header">
+    <h1 class="title">
+        Домашний таймер
+    </h1>
 
-        <h1 class="title">
-            Домашний таймер
-        </h1>
-
-        <p class="subtitle">
-            Рассчитай, когда запустить технику
-        </p>
+    <p class="subtitle">
+        Рассчитай, когда запустить технику
+    </p>
 
 
-        <div class="clock">
+    <!-- CLOCK -->
 
-            <div class="clock-label">
-                Сейчас
-            </div>
+    <div class="clock">
 
-            <div
-                class="clock-time"
-                id="currentTime"
-            >
-                --:--
-            </div>
-
+        <div class="clock-label">
+            Сейчас
         </div>
 
-    </header>
+        <div
+            class="clock-time"
+            id="currentTime"
+        >
+            --:--
+        </div>
+
+    </div>
 
 
-    <!-- =========================================
-         TABS
-    ========================================== -->
+    <!-- TABS -->
 
     <div class="tabs">
 
         <button
+            type="button"
             class="tab active"
             id="washTab"
         >
@@ -512,6 +477,7 @@
         </button>
 
         <button
+            type="button"
             class="tab"
             id="dishTab"
         >
@@ -519,6 +485,7 @@
         </button>
 
         <button
+            type="button"
             class="tab"
             id="breadTab"
         >
@@ -528,9 +495,9 @@
     </div>
 
 
-    <!-- =========================================
+    <!-- ======================================
          СТИРКА
-    ========================================== -->
+    ======================================= -->
 
     <section
         class="card"
@@ -595,7 +562,7 @@
                         id="washMinutes"
                         min="0"
                         max="59"
-                        value="00"
+                        value="0"
                     >
 
                     <span class="unit">
@@ -610,8 +577,9 @@
 
 
         <button
+            type="button"
             class="calculate"
-            onclick="calculateWash()"
+            id="washCalculate"
         >
             Рассчитать
         </button>
@@ -674,9 +642,9 @@
 
 
             <div class="hint">
-                Отсрочка стиральной машины устанавливается
-                целыми часами. Расчёт выбирает максимальную
-                отсрочку, которая не даст закончить позже цели.
+                Отсрочка устанавливается целыми часами.
+                Расчёт выбирает максимальную отсрочку,
+                при которой стирка не закончится позже цели.
             </div>
 
         </div>
@@ -684,9 +652,10 @@
     </section>
 
 
-    <!-- =========================================
+
+    <!-- ======================================
          ПОСУДОМОЙКА
-    ========================================== -->
+    ======================================= -->
 
     <section
         class="card hidden"
@@ -699,7 +668,7 @@
 
         <p class="section-description">
             Beko DVS05024S. Выбери программу —
-            я сам учту её длительность и запас 30 минут.
+            я учту её длительность и запас 30 минут.
         </p>
 
 
@@ -756,13 +725,14 @@
 
 
         <div class="hint" style="margin-top:-5px; margin-bottom:17px;">
-            Запас на случай, если программа немного затянется: <b>30 мин</b>
+            Закладываем дополнительный запас: <b>30 минут</b>
         </div>
 
 
         <button
+            type="button"
             class="calculate"
-            onclick="calculateDish()"
+            id="dishCalculate"
         >
             Рассчитать
         </button>
@@ -864,9 +834,9 @@
 
 
             <div class="hint">
-                Отсрочка посудомойки может быть только
-                3, 6 или 9 часов. Выбирается самая поздняя
-                подходящая отсрочка, чтобы не запускать её
+                Доступны отсрочки 3, 6 и 9 часов.
+                Выбирается самая поздняя подходящая
+                отсрочка, чтобы не запускать машину
                 раньше необходимого.
             </div>
 
@@ -875,9 +845,10 @@
     </section>
 
 
-    <!-- =========================================
+
+    <!-- ======================================
          ХЛЕБ
-    ========================================== -->
+    ======================================= -->
 
     <section
         class="card hidden"
@@ -910,8 +881,9 @@
 
 
         <button
+            type="button"
             class="calculate"
-            onclick="calculateBread()"
+            id="breadCalculate"
         >
             Рассчитать
         </button>
@@ -975,7 +947,7 @@
 
             <div class="hint">
                 Таймер хлебопечки устанавливается
-                с шагом 10 минут. Расчёт округляется вниз,
+                с шагом 10 минут. Округляем вниз,
                 чтобы хлеб не оказался готов позже цели.
             </div>
 
@@ -990,36 +962,29 @@
 <script>
 
 
-// ============================================================
-// ОБЩИЕ ФУНКЦИИ
-// ============================================================
-
-function getNow() {
-
-    return new Date();
-
-}
-
+/* =========================================================
+   ОБЩИЕ ФУНКЦИИ
+========================================================= */
 
 function getCurrentMinutes() {
 
-    const now = getNow();
+    const now = new Date();
 
     return (
         now.getHours() * 60
         + now.getMinutes()
     );
-
 }
 
 
 function timeToMinutes(time) {
 
-    const [hours, minutes] =
-        time.split(":").map(Number);
+    const parts = time.split(":");
 
-    return hours * 60 + minutes;
-
+    return (
+        Number(parts[0]) * 60
+        + Number(parts[1])
+    );
 }
 
 
@@ -1039,7 +1004,6 @@ function minutesToTime(totalMinutes) {
         + ":"
         + String(minutes).padStart(2, "0")
     );
-
 }
 
 
@@ -1055,29 +1019,26 @@ function formatDuration(totalMinutes) {
     if (hours === 0) {
 
         return `${minutes} мин`;
-
     }
 
 
     if (minutes === 0) {
 
         return `${hours} ч`;
-
     }
 
 
     return `${hours} ч ${minutes} мин`;
-
 }
 
 
-// ============================================================
-// ЧАСЫ
-// ============================================================
+/* =========================================================
+   ЧАСЫ
+========================================================= */
 
 function updateClock() {
 
-    const now = getNow();
+    const now = new Date();
 
     const hours =
         String(now.getHours()).padStart(2, "0");
@@ -1086,8 +1047,8 @@ function updateClock() {
         String(now.getMinutes()).padStart(2, "0");
 
     document.getElementById("currentTime")
-        .textContent = `${hours}:${minutes}`;
-
+        .textContent =
+        `${hours}:${minutes}`;
 }
 
 
@@ -1096,9 +1057,9 @@ updateClock();
 setInterval(updateClock, 1000);
 
 
-// ============================================================
-// ВКЛАДКИ
-// ============================================================
+/* =========================================================
+   ВКЛАДКИ
+========================================================= */
 
 const washTab =
     document.getElementById("washTab");
@@ -1120,7 +1081,7 @@ const breadCard =
     document.getElementById("breadCard");
 
 
-function showTab(tab, card) {
+function showTab(activeTab, activeCard) {
 
     washTab.classList.remove("active");
     dishTab.classList.remove("active");
@@ -1130,52 +1091,45 @@ function showTab(tab, card) {
     dishCard.classList.add("hidden");
     breadCard.classList.add("hidden");
 
-    tab.classList.add("active");
-    card.classList.remove("hidden");
-
+    activeTab.classList.add("active");
+    activeCard.classList.remove("hidden");
 }
 
 
-washTab.addEventListener("click", () => {
+washTab.addEventListener("click", function () {
 
     showTab(washTab, washCard);
 
 });
 
 
-dishTab.addEventListener("click", () => {
+dishTab.addEventListener("click", function () {
 
     showTab(dishTab, dishCard);
 
-    calculateDish();
-
 });
 
 
-breadTab.addEventListener("click", () => {
+breadTab.addEventListener("click", function () {
 
     showTab(breadTab, breadCard);
 
-    calculateBread();
-
 });
 
 
-// ============================================================
-// СТИРКА
-// ============================================================
+/* =========================================================
+   СТИРАЛЬНАЯ МАШИНА
+========================================================= */
 
 function calculateWash() {
 
     const targetValue =
         document.getElementById("washTarget").value;
 
-
     const hours =
         Number(
             document.getElementById("washHours").value
         ) || 0;
-
 
     const minutes =
         Number(
@@ -1186,12 +1140,19 @@ function calculateWash() {
     if (!targetValue) {
 
         return;
-
     }
 
 
     const duration =
         hours * 60 + minutes;
+
+
+    if (duration <= 0) {
+
+        alert("Укажи длительность стирки.");
+
+        return;
+    }
 
 
     const now =
@@ -1205,7 +1166,6 @@ function calculateWash() {
     if (target <= now) {
 
         target += 1440;
-
     }
 
 
@@ -1215,7 +1175,6 @@ function calculateWash() {
 
     const result =
         document.getElementById("washResult");
-
 
     result.classList.add("visible");
 
@@ -1238,16 +1197,20 @@ function calculateWash() {
 
         document.getElementById("washFinish")
             .textContent =
-            "Нужно запустить сейчас";
+            "Запусти сейчас";
 
         return;
-
     }
 
 
-    // Только целые часы.
-    // Берём максимальную возможную отсрочку,
-    // которая укладывается в нужное время.
+    /*
+       Стиральная машина:
+       отсрочка только целыми часами.
+
+       Берём максимальное количество
+       полных часов, которое помещается
+       до желаемого окончания.
+    */
 
     const delayHours =
         Math.floor(exactDelay / 60);
@@ -1269,13 +1232,17 @@ function calculateWash() {
     document.getElementById("washFinish")
         .textContent =
         minutesToTime(actualFinish);
-
 }
 
 
-// ============================================================
-// ПОСУДОМОЙКА
-// ============================================================
+document
+    .getElementById("washCalculate")
+    .addEventListener("click", calculateWash);
+
+
+/* =========================================================
+   ПОСУДОМОЙКА
+========================================================= */
 
 function calculateDish() {
 
@@ -1286,7 +1253,6 @@ function calculateDish() {
     if (!targetValue) {
 
         return;
-
     }
 
 
@@ -1304,8 +1270,7 @@ function calculateDish() {
         ].text;
 
 
-    const safetyMargin =
-        30;
+    const safetyMargin = 30;
 
 
     const totalDuration =
@@ -1324,9 +1289,18 @@ function calculateDish() {
     if (target <= now) {
 
         target += 1440;
-
     }
 
+
+    /*
+       Отсрочки Beko:
+       3 / 6 / 9 часов.
+
+       Проверяем от самой большой к самой маленькой,
+       чтобы машина запускалась как можно позже.
+
+       При проверке учитываем +30 минут запаса.
+    */
 
     const possibleDelays = [
         540,
@@ -1335,23 +1309,8 @@ function calculateDish() {
     ];
 
 
-    let selectedDelay =
-        null;
+    let selectedDelay = null;
 
-
-    /*
-        Ищем САМУЮ ПОЗДНЮЮ подходящую отсрочку.
-
-        Например:
-
-        3 часа  → подходит
-        6 часов → подходит
-
-        выбираем 3 часа,
-
-        потому что нет смысла запускать машину
-        раньше, если она и с 3 часами успевает.
-    */
 
     for (const delay of possibleDelays) {
 
@@ -1366,15 +1325,12 @@ function calculateDish() {
             selectedDelay = delay;
 
             break;
-
         }
-
     }
 
 
     const result =
         document.getElementById("dishResult");
-
 
     result.classList.add("visible");
 
@@ -1399,20 +1355,47 @@ function calculateDish() {
         targetValue;
 
 
+    /*
+       Если даже отсрочка 3 часа
+       не помещается, проверяем,
+       успеет ли машина без отсрочки.
+    */
+
     if (selectedDelay === null) {
 
-        document.getElementById("dishDelay")
-            .textContent =
-            "Не успеет";
+        const immediateSafeFinish =
+            now + totalDuration;
 
 
-        document.getElementById("dishFinish")
-            .textContent =
-            "Нет подходящей отсрочки";
+        if (immediateSafeFinish <= target) {
+
+            document.getElementById("dishDelay")
+                .textContent =
+                "Без отсрочки";
+
+
+            document.getElementById("dishFinish")
+                .textContent =
+                minutesToTime(
+                    now + programMinutes
+                );
+
+
+        } else {
+
+            document.getElementById("dishDelay")
+                .textContent =
+                "Не успеет";
+
+
+            document.getElementById("dishFinish")
+                .textContent =
+                "Даже без отсрочки";
+
+        }
 
 
         return;
-
     }
 
 
@@ -1430,13 +1413,17 @@ function calculateDish() {
     document.getElementById("dishFinish")
         .textContent =
         minutesToTime(actualFinish);
-
 }
 
 
-// ============================================================
-// ХЛЕБОПЕЧКА
-// ============================================================
+document
+    .getElementById("dishCalculate")
+    .addEventListener("click", calculateDish);
+
+
+/* =========================================================
+   ХЛЕБОПЕЧКА
+========================================================= */
 
 function calculateBread() {
 
@@ -1447,7 +1434,6 @@ function calculateBread() {
     if (!targetValue) {
 
         return;
-
     }
 
 
@@ -1462,16 +1448,21 @@ function calculateBread() {
     if (target <= now) {
 
         target += 1440;
-
     }
 
+
+    /*
+       Таймер хлебопечки —
+       это ОБЩЕЕ время до готовности.
+
+       Шаг — 10 минут.
+
+       Округляем вниз.
+    */
 
     const exactTime =
         target - now;
 
-
-    // Шаг хлебопечки — 10 минут.
-    // Округляем вниз, чтобы не опоздать.
 
     const timerMinutes =
         Math.floor(exactTime / 10) * 10;
@@ -1503,45 +1494,13 @@ function calculateBread() {
     document.getElementById("breadFinish")
         .textContent =
         minutesToTime(actualFinish);
-
 }
 
 
-// ============================================================
-// АВТОМАТИЧЕСКИЙ РАСЧЁТ
-// ============================================================
-
 document
-    .getElementById("washTarget")
-    .addEventListener("change", calculateWash);
+    .getElementById("breadCalculate")
+    .addEventListener("click", calculateBread);
 
-document
-    .getElementById("washHours")
-    .addEventListener("input", calculateWash);
-
-document
-    .getElementById("washMinutes")
-    .addEventListener("input", calculateWash);
-
-
-document
-    .getElementById("dishTarget")
-    .addEventListener("change", calculateDish);
-
-document
-    .getElementById("dishProgram")
-    .addEventListener("change", calculateDish);
-
-document
-    .getElementById("breadTarget")
-    .addEventListener("change", calculateBread);
-
-
-// ============================================================
-// ПЕРВЫЙ РАСЧЁТ
-// ============================================================
-
-calculateWash();
 
 </script>
 
