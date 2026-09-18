@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Домашний таймер</title>
 
@@ -11,145 +12,237 @@
             box-sizing: border-box;
         }
 
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-                         "SF Pro Text", Arial, sans-serif;
-            background: #f4f4f2;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "SF Pro Display",
+                "SF Pro Text",
+                Arial,
+                sans-serif;
+
+            background: #f5f5f3;
             color: #171717;
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
         }
 
         .app {
             width: 100%;
-            max-width: 520px;
+            max-width: 560px;
             margin: 0 auto;
-            padding: 24px 18px 40px;
+
+            padding:
+                calc(20px + env(safe-area-inset-top))
+                16px
+                calc(32px + env(safe-area-inset-bottom));
         }
 
+
+        /* ================================
+           HEADER
+        ================================= */
+
         .header {
-            margin-bottom: 22px;
+            margin-bottom: 18px;
         }
 
         .title {
-            font-size: 32px;
+            margin: 0;
+
+            font-size: clamp(29px, 8vw, 36px);
+            line-height: 1.05;
             font-weight: 800;
-            letter-spacing: -1px;
-            margin: 0 0 6px;
+            letter-spacing: -1.2px;
         }
 
         .subtitle {
-            color: #777;
+            margin: 7px 0 0;
+
             font-size: 15px;
-            margin: 0;
+            line-height: 1.35;
+
+            color: #858585;
         }
 
+
+        /* ================================
+           CLOCK
+        ================================= */
+
         .clock {
-            margin-top: 18px;
-            padding: 18px;
+            margin-top: 17px;
+
+            padding: 17px 18px 19px;
+
             border-radius: 22px;
+
             background: #171717;
             color: white;
+
             text-align: center;
         }
 
         .clock-label {
-            font-size: 12px;
-            color: #aaa;
+            margin-bottom: 5px;
+
+            font-size: 11px;
+            font-weight: 600;
+
+            letter-spacing: 1.4px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
+
+            color: #a5a5a5;
         }
 
         .clock-time {
             font-size: 40px;
             line-height: 1;
-            font-weight: 700;
+
+            font-weight: 750;
             letter-spacing: -1px;
         }
 
-        /* =========================
-           ВКЛАДКИ
-        ========================= */
+
+        /* ================================
+           TABS
+        ================================= */
 
         .tabs {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-            padding: 6px;
-            margin: 20px 0 16px;
-            background: #e7e7e4;
-            border-radius: 16px;
+
+            gap: 4px;
+
+            padding: 5px;
+            margin-bottom: 14px;
+
+            background: #e8e8e6;
+
+            border-radius: 17px;
         }
 
         .tab {
+            min-width: 0;
+
+            height: 48px;
+
+            padding: 0 4px;
+
             border: 0;
-            padding: 13px 5px;
-            border-radius: 12px;
+            border-radius: 13px;
+
             background: transparent;
+
+            color: #7c7c7c;
+
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 650;
+
+            white-space: nowrap;
+
             cursor: pointer;
-            color: #777;
+
+            -webkit-tap-highlight-color: transparent;
         }
 
         .tab.active {
             background: white;
             color: #171717;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
-        /* =========================
-           КАРТОЧКА
-        ========================= */
+
+        /* ================================
+           CARD
+        ================================= */
 
         .card {
             background: white;
+
             border-radius: 24px;
-            padding: 22px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+
+            padding: 21px 18px;
+
+            box-shadow:
+                0 5px 22px rgba(0, 0, 0, 0.045);
+        }
+
+        .hidden {
+            display: none;
         }
 
         .section-title {
-            font-size: 21px;
-            font-weight: 750;
-            margin: 0 0 5px;
+            margin: 0;
+
+            font-size: 23px;
+            line-height: 1.15;
+
+            font-weight: 780;
+            letter-spacing: -0.5px;
         }
 
         .section-description {
+            margin: 7px 0 21px;
+
+            color: #858585;
+
             font-size: 14px;
-            color: #888;
-            margin: 0 0 22px;
             line-height: 1.4;
         }
 
-        /* =========================
-           ПОЛЯ
-        ========================= */
+
+        /* ================================
+           FIELDS
+        ================================= */
 
         .field {
-            margin-bottom: 18px;
+            margin-bottom: 17px;
         }
 
         label {
             display: block;
-            font-size: 14px;
-            font-weight: 600;
+
             margin-bottom: 8px;
+
+            font-size: 15px;
+            font-weight: 650;
         }
 
         input,
         select {
             width: 100%;
-            height: 54px;
-            border: 1px solid #ddd;
+            height: 53px;
+
+            padding: 0 14px;
+
+            border: 1px solid #dededc;
             border-radius: 15px;
+
             background: #fafafa;
-            padding: 0 15px;
-            font-size: 17px;
-            font-family: inherit;
+
             color: #171717;
+
+            font-size: 17px;
+
             outline: none;
+
+            -webkit-appearance: none;
         }
 
         input:focus,
@@ -158,43 +251,120 @@
             background: white;
         }
 
-        .row {
+
+        /* ================================
+           DURATION
+        ================================= */
+
+        .duration-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+
+            gap: 10px;
         }
 
-        /* =========================
-           КНОПКА
-        ========================= */
+        .duration-field {
+            position: relative;
+        }
+
+        .duration-field input {
+            padding-right: 48px;
+        }
+
+        .unit {
+            position: absolute;
+
+            right: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #8a8a8a;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            pointer-events: none;
+        }
+
+
+        /* ================================
+           SELECT
+        ================================= */
+
+        .select-wrap {
+            position: relative;
+        }
+
+        .select-wrap::after {
+            content: "⌄";
+
+            position: absolute;
+
+            right: 15px;
+            top: 50%;
+
+            transform: translateY(-55%);
+
+            color: #777;
+
+            font-size: 18px;
+
+            pointer-events: none;
+        }
+
+        .select-wrap select {
+            padding-right: 42px;
+        }
+
+
+        /* ================================
+           BUTTON
+        ================================= */
 
         .calculate {
             width: 100%;
+            height: 54px;
+
+            margin-top: 1px;
+
             border: 0;
-            height: 56px;
             border-radius: 16px;
+
             background: #171717;
             color: white;
+
             font-size: 17px;
             font-weight: 700;
+
             cursor: pointer;
-            margin-top: 4px;
+
+            transition:
+                transform 0.08s ease,
+                opacity 0.15s ease;
+
+            -webkit-tap-highlight-color: transparent;
         }
 
         .calculate:active {
-            transform: scale(0.98);
+            transform: scale(0.985);
+            opacity: 0.9;
         }
 
-        /* =========================
-           РЕЗУЛЬТАТ
-        ========================= */
+
+        /* ================================
+           RESULT
+        ================================= */
 
         .result {
             display: none;
-            margin-top: 18px;
-            padding: 20px;
-            border-radius: 20px;
-            background: #f0f0ed;
+
+            margin-top: 15px;
+            padding: 18px;
+
+            border-radius: 19px;
+
+            background: #f1f1ee;
         }
 
         .result.visible {
@@ -202,25 +372,36 @@
         }
 
         .result-label {
-            font-size: 13px;
-            color: #777;
             margin-bottom: 4px;
+
+            color: #777;
+
+            font-size: 13px;
         }
 
         .result-main {
-            font-size: 30px;
+            margin-bottom: 13px;
+
+            font-size: 29px;
+            line-height: 1.1;
+
             font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 14px;
+            letter-spacing: -0.6px;
         }
 
         .result-row {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            gap: 20px;
+
+            gap: 15px;
+
             padding: 9px 0;
-            border-top: 1px solid #ddd;
+
+            border-top: 1px solid #dcdcd9;
+
             font-size: 14px;
+            line-height: 1.3;
         }
 
         .result-row span:first-child {
@@ -228,55 +409,53 @@
         }
 
         .result-row span:last-child {
-            font-weight: 600;
+            font-weight: 650;
             text-align: right;
         }
 
         .hint {
-            margin-top: 14px;
-            font-size: 13px;
+            margin-top: 12px;
+
             color: #888;
+
+            font-size: 12.5px;
             line-height: 1.45;
         }
 
-        .hidden {
-            display: none;
-        }
 
-        /* =========================
-           ИНФО ПРОГРАММЫ
-        ========================= */
+        /* ================================
+           MOBILE
+        ================================= */
 
-        .program-info {
-            margin-top: -8px;
-            margin-bottom: 18px;
-            font-size: 13px;
-            color: #888;
-        }
-
-        @media (max-width: 380px) {
+        @media (max-width: 390px) {
 
             .app {
-                padding-left: 14px;
-                padding-right: 14px;
-            }
-
-            .card {
-                padding: 18px;
+                padding-left: 13px;
+                padding-right: 13px;
             }
 
             .title {
-                font-size: 29px;
+                font-size: 30px;
             }
 
             .clock-time {
-                font-size: 36px;
+                font-size: 37px;
             }
 
             .tab {
-                font-size: 13px;
+                font-size: 12.5px;
+            }
+
+            .card {
+                padding: 19px 16px;
+                border-radius: 22px;
+            }
+
+            .section-title {
+                font-size: 22px;
             }
         }
+
     </style>
 </head>
 
@@ -285,11 +464,12 @@
 
 <div class="app">
 
-    <!-- =========================
-         ЗАГОЛОВОК
-    ========================== -->
 
-    <div class="header">
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header">
 
         <h1 class="title">
             Домашний таймер
@@ -306,18 +486,21 @@
                 Сейчас
             </div>
 
-            <div class="clock-time" id="currentTime">
+            <div
+                class="clock-time"
+                id="currentTime"
+            >
                 --:--
             </div>
 
         </div>
 
-    </div>
+    </header>
 
 
-    <!-- =========================
-         ВКЛАДКИ
-    ========================== -->
+    <!-- =========================================
+         TABS
+    ========================================== -->
 
     <div class="tabs">
 
@@ -328,14 +511,12 @@
             🧺 Стирка
         </button>
 
-
         <button
             class="tab"
             id="dishTab"
         >
             🍽️ Посудомойка
         </button>
-
 
         <button
             class="tab"
@@ -347,11 +528,11 @@
     </div>
 
 
-    <!-- =====================================================
-         СТИРАЛЬНАЯ МАШИНА
-    ====================================================== -->
+    <!-- =========================================
+         СТИРКА
+    ========================================== -->
 
-    <div
+    <section
         class="card"
         id="washCard"
     >
@@ -360,14 +541,11 @@
             Стиральная машина
         </h2>
 
-
         <p class="section-description">
-            Укажи, когда должна закончиться стирка,
-            и сколько длится программа.
+            Укажи желаемое время окончания
+            и длительность программы.
         </p>
 
-
-        <!-- Время окончания -->
 
         <div class="field">
 
@@ -384,33 +562,47 @@
         </div>
 
 
-        <!-- Длительность -->
-
         <div class="field">
 
             <label>
                 Стирка длится
             </label>
 
-            <div class="row">
 
-                <input
-                    type="number"
-                    id="washDurationHours"
-                    min="0"
-                    max="23"
-                    value="2"
-                    placeholder="Часы"
-                >
+            <div class="duration-row">
 
-                <input
-                    type="number"
-                    id="washDurationMinutes"
-                    min="0"
-                    max="59"
-                    value="0"
-                    placeholder="Минуты"
-                >
+                <div class="duration-field">
+
+                    <input
+                        type="number"
+                        id="washHours"
+                        min="0"
+                        max="23"
+                        value="2"
+                    >
+
+                    <span class="unit">
+                        ч
+                    </span>
+
+                </div>
+
+
+                <div class="duration-field">
+
+                    <input
+                        type="number"
+                        id="washMinutes"
+                        min="0"
+                        max="59"
+                        value="00"
+                    >
+
+                    <span class="unit">
+                        мин
+                    </span>
+
+                </div>
 
             </div>
 
@@ -425,8 +617,6 @@
         </button>
 
 
-        <!-- Результат -->
-
         <div
             class="result"
             id="washResult"
@@ -435,7 +625,6 @@
             <div class="result-label">
                 Поставь отсрочку
             </div>
-
 
             <div
                 class="result-main"
@@ -451,7 +640,7 @@
                     Стирка длится
                 </span>
 
-                <span id="washProgram">
+                <span id="washDurationResult">
                     —
                 </span>
 
@@ -461,7 +650,7 @@
             <div class="result-row">
 
                 <span>
-                    Фактическое окончание
+                    Закончит примерно
                 </span>
 
                 <span id="washFinish">
@@ -474,7 +663,7 @@
             <div class="result-row">
 
                 <span>
-                    Желаемое окончание
+                    Нужно закончить к
                 </span>
 
                 <span id="washDesired">
@@ -485,21 +674,21 @@
 
 
             <div class="hint">
-                Отсрочка стиральной машины — целые часы.
-                Расчёт округляется вниз, чтобы стирка
-                не закончилась позже указанного времени.
+                Отсрочка стиральной машины устанавливается
+                целыми часами. Расчёт выбирает максимальную
+                отсрочку, которая не даст закончить позже цели.
             </div>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- =====================================================
-         ПОСУДОМОЕЧНАЯ МАШИНА
-    ====================================================== -->
+    <!-- =========================================
+         ПОСУДОМОЙКА
+    ========================================== -->
 
-    <div
+    <section
         class="card hidden"
         id="dishCard"
     >
@@ -508,15 +697,11 @@
             Посудомоечная машина
         </h2>
 
-
         <p class="section-description">
             Beko DVS05024S. Выбери программу —
-            я автоматически учту её длительность
-            и добавлю 30 минут запаса.
+            я сам учту её длительность и запас 30 минут.
         </p>
 
-
-        <!-- Время окончания -->
 
         <div class="field">
 
@@ -533,43 +718,45 @@
         </div>
 
 
-        <!-- Программа -->
-
         <div class="field">
 
             <label for="dishProgram">
                 Программа
             </label>
 
-            <select id="dishProgram">
+            <div class="select-wrap">
 
-                <option value="210">
-                    Eco 50°C — 3 ч 30 мин
-                </option>
+                <select id="dishProgram">
 
-                <option value="115">
-                    Intensive 70°C — 1 ч 55 мин
-                </option>
+                    <option value="210">
+                        Eco 50°C — 3 ч 30 мин
+                    </option>
 
-                <option value="120">
-                    Clean&Shine — 2 ч
-                </option>
+                    <option value="115">
+                        Intensive 70°C — 1 ч 55 мин
+                    </option>
 
-                <option value="58">
-                    Quick&Shine — 58 мин
-                </option>
+                    <option value="120">
+                        Clean&Shine — 2 ч
+                    </option>
 
-                <option value="30">
-                    Mini — 30 мин
-                </option>
+                    <option value="58">
+                        Quick&Shine — 58 мин
+                    </option>
 
-            </select>
+                    <option value="30">
+                        Mini — 30 мин
+                    </option>
+
+                </select>
+
+            </div>
 
         </div>
 
 
-        <div class="program-info">
-            + 30 минут запаса на возможное увеличение времени программы
+        <div class="hint" style="margin-top:-5px; margin-bottom:17px;">
+            Запас на случай, если программа немного затянется: <b>30 мин</b>
         </div>
 
 
@@ -581,8 +768,6 @@
         </button>
 
 
-        <!-- Результат -->
-
         <div
             class="result"
             id="dishResult"
@@ -591,7 +776,6 @@
             <div class="result-label">
                 Поставь отсрочку
             </div>
-
 
             <div
                 class="result-main"
@@ -643,7 +827,7 @@
             <div class="result-row">
 
                 <span>
-                    Расчётное время
+                    Всего закладываем
                 </span>
 
                 <span id="dishTotal">
@@ -656,7 +840,7 @@
             <div class="result-row">
 
                 <span>
-                    Примерное окончание
+                    Закончит примерно
                 </span>
 
                 <span id="dishFinish">
@@ -669,7 +853,7 @@
             <div class="result-row">
 
                 <span>
-                    Желаемое окончание
+                    Нужно закончить к
                 </span>
 
                 <span id="dishDesired">
@@ -680,21 +864,22 @@
 
 
             <div class="hint">
-                Посудомойка позволяет выбрать отсрочку
-                только 3, 6 или 9 часов. Выбирается
-                минимальная подходящая отсрочка.
+                Отсрочка посудомойки может быть только
+                3, 6 или 9 часов. Выбирается самая поздняя
+                подходящая отсрочка, чтобы не запускать её
+                раньше необходимого.
             </div>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- =====================================================
-         ХЛЕБОПЕЧКА
-    ====================================================== -->
+    <!-- =========================================
+         ХЛЕБ
+    ========================================== -->
 
-    <div
+    <section
         class="card hidden"
         id="breadCard"
     >
@@ -703,10 +888,9 @@
             Хлебопечка
         </h2>
 
-
         <p class="section-description">
-            Таймер хлебопечки показывает общее время
-            до готовности хлеба.
+            Укажи, когда хлеб должен быть готов.
+            Таймер показывает общее время до готовности.
         </p>
 
 
@@ -742,7 +926,6 @@
                 Установи таймер
             </div>
 
-
             <div
                 class="result-main"
                 id="breadDelay"
@@ -767,7 +950,7 @@
             <div class="result-row">
 
                 <span>
-                    Желаемое время
+                    Нужно к
                 </span>
 
                 <span id="breadDesired">
@@ -780,7 +963,7 @@
             <div class="result-row">
 
                 <span>
-                    Получится примерно
+                    Будет готов примерно
                 </span>
 
                 <span id="breadFinish">
@@ -792,12 +975,13 @@
 
             <div class="hint">
                 Таймер хлебопечки устанавливается
-                с шагом 10 минут.
+                с шагом 10 минут. Расчёт округляется вниз,
+                чтобы хлеб не оказался готов позже цели.
             </div>
 
         </div>
 
-    </div>
+    </section>
 
 </div>
 
@@ -806,13 +990,94 @@
 <script>
 
 
-// ==========================================================
-// ТЕКУЩЕЕ ВРЕМЯ
-// ==========================================================
+// ============================================================
+// ОБЩИЕ ФУНКЦИИ
+// ============================================================
+
+function getNow() {
+
+    return new Date();
+
+}
+
+
+function getCurrentMinutes() {
+
+    const now = getNow();
+
+    return (
+        now.getHours() * 60
+        + now.getMinutes()
+    );
+
+}
+
+
+function timeToMinutes(time) {
+
+    const [hours, minutes] =
+        time.split(":").map(Number);
+
+    return hours * 60 + minutes;
+
+}
+
+
+function minutesToTime(totalMinutes) {
+
+    totalMinutes =
+        ((totalMinutes % 1440) + 1440) % 1440;
+
+    const hours =
+        Math.floor(totalMinutes / 60);
+
+    const minutes =
+        totalMinutes % 60;
+
+    return (
+        String(hours).padStart(2, "0")
+        + ":"
+        + String(minutes).padStart(2, "0")
+    );
+
+}
+
+
+function formatDuration(totalMinutes) {
+
+    const hours =
+        Math.floor(totalMinutes / 60);
+
+    const minutes =
+        totalMinutes % 60;
+
+
+    if (hours === 0) {
+
+        return `${minutes} мин`;
+
+    }
+
+
+    if (minutes === 0) {
+
+        return `${hours} ч`;
+
+    }
+
+
+    return `${hours} ч ${minutes} мин`;
+
+}
+
+
+// ============================================================
+// ЧАСЫ
+// ============================================================
 
 function updateClock() {
 
-    const now = new Date();
+    const now = getNow();
 
     const hours =
         String(now.getHours()).padStart(2, "0");
@@ -820,9 +1085,8 @@ function updateClock() {
     const minutes =
         String(now.getMinutes()).padStart(2, "0");
 
-
-    document.getElementById("currentTime").textContent =
-        `${hours}:${minutes}`;
+    document.getElementById("currentTime")
+        .textContent = `${hours}:${minutes}`;
 
 }
 
@@ -832,10 +1096,9 @@ updateClock();
 setInterval(updateClock, 1000);
 
 
-
-// ==========================================================
-// ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК
-// ==========================================================
+// ============================================================
+// ВКЛАДКИ
+// ============================================================
 
 const washTab =
     document.getElementById("washTab");
@@ -857,150 +1120,50 @@ const breadCard =
     document.getElementById("breadCard");
 
 
-
-washTab.addEventListener("click", function () {
-
-    washTab.classList.add("active");
-
-    dishTab.classList.remove("active");
-
-    breadTab.classList.remove("active");
-
-
-    washCard.classList.remove("hidden");
-
-    dishCard.classList.add("hidden");
-
-    breadCard.classList.add("hidden");
-
-});
-
-
-
-dishTab.addEventListener("click", function () {
-
-    dishTab.classList.add("active");
+function showTab(tab, card) {
 
     washTab.classList.remove("active");
-
+    dishTab.classList.remove("active");
     breadTab.classList.remove("active");
 
-
-    dishCard.classList.remove("hidden");
-
     washCard.classList.add("hidden");
-
+    dishCard.classList.add("hidden");
     breadCard.classList.add("hidden");
 
-});
+    tab.classList.add("active");
+    card.classList.remove("hidden");
+
+}
 
 
+washTab.addEventListener("click", () => {
 
-breadTab.addEventListener("click", function () {
-
-    breadTab.classList.add("active");
-
-    washTab.classList.remove("active");
-
-    dishTab.classList.remove("active");
-
-
-    breadCard.classList.remove("hidden");
-
-    washCard.classList.add("hidden");
-
-    dishCard.classList.add("hidden");
+    showTab(washTab, washCard);
 
 });
 
 
+dishTab.addEventListener("click", () => {
 
-// ==========================================================
-// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-// ==========================================================
+    showTab(dishTab, dishCard);
 
-function getCurrentMinutes() {
+    calculateDish();
 
-    const now = new Date();
-
-    return (
-        now.getHours() * 60
-        + now.getMinutes()
-    );
-
-}
+});
 
 
+breadTab.addEventListener("click", () => {
 
-function timeToMinutes(time) {
+    showTab(breadTab, breadCard);
 
-    const parts =
-        time.split(":");
+    calculateBread();
 
-    return (
-        Number(parts[0]) * 60
-        + Number(parts[1])
-    );
-
-}
+});
 
 
-
-function minutesToTime(totalMinutes) {
-
-    totalMinutes =
-        ((totalMinutes % 1440) + 1440) % 1440;
-
-
-    const hours =
-        Math.floor(totalMinutes / 60);
-
-    const minutes =
-        totalMinutes % 60;
-
-
-    return (
-        String(hours).padStart(2, "0")
-        + ":"
-        + String(minutes).padStart(2, "0")
-    );
-
-}
-
-
-
-function formatDuration(minutes) {
-
-    const hours =
-        Math.floor(minutes / 60);
-
-    const mins =
-        minutes % 60;
-
-
-    if (hours === 0) {
-
-        return `${mins} мин`;
-
-    }
-
-
-    if (mins === 0) {
-
-        return `${hours} ч`;
-
-    }
-
-
-    return `${hours} ч ${mins} мин`;
-
-}
-
-
-
-// ==========================================================
-// СТИРАЛЬНАЯ МАШИНА
-// ==========================================================
+// ============================================================
+// СТИРКА
+// ============================================================
 
 function calculateWash() {
 
@@ -1008,29 +1171,23 @@ function calculateWash() {
         document.getElementById("washTarget").value;
 
 
-    if (!targetValue) {
-
-        alert("Укажи время окончания стирки.");
-
-        return;
-
-    }
-
-
     const hours =
         Number(
-            document.getElementById(
-                "washDurationHours"
-            ).value
+            document.getElementById("washHours").value
         ) || 0;
 
 
     const minutes =
         Number(
-            document.getElementById(
-                "washDurationMinutes"
-            ).value
+            document.getElementById("washMinutes").value
         ) || 0;
+
+
+    if (!targetValue) {
+
+        return;
+
+    }
 
 
     const duration =
@@ -1045,9 +1202,6 @@ function calculateWash() {
         timeToMinutes(targetValue);
 
 
-    // Если время уже прошло —
-    // считаем следующий день.
-
     if (target <= now) {
 
         target += 1440;
@@ -1055,102 +1209,73 @@ function calculateWash() {
     }
 
 
-    // Сколько всего времени осталось
-    // до желаемого окончания.
-
     const exactDelay =
         target - now - duration;
 
 
+    const result =
+        document.getElementById("washResult");
+
+
+    result.classList.add("visible");
+
+
+    document.getElementById("washDurationResult")
+        .textContent =
+        formatDuration(duration);
+
+
+    document.getElementById("washDesired")
+        .textContent =
+        targetValue;
+
+
     if (exactDelay < 0) {
 
-        document
-            .getElementById("washResult")
-            .classList.add("visible");
-
-
-        document
-            .getElementById("washDelay")
-            .textContent = "Невозможно";
-
-
-        document
-            .getElementById("washProgram")
+        document.getElementById("washDelay")
             .textContent =
-                formatDuration(duration);
+            "Не успеет";
 
-
-        document
-            .getElementById("washFinish")
+        document.getElementById("washFinish")
             .textContent =
-                "Не успеет";
-
-
-        document
-            .getElementById("washDesired")
-            .textContent =
-                targetValue;
-
+            "Нужно запустить сейчас";
 
         return;
 
     }
 
 
-    // Отсрочка только целыми часами.
-    // Округляем вниз.
+    // Только целые часы.
+    // Берём максимальную возможную отсрочку,
+    // которая укладывается в нужное время.
 
     const delayHours =
         Math.floor(exactDelay / 60);
 
 
-    const actualDelay =
-        delayHours * 60;
-
-
     const actualFinish =
         now
-        + actualDelay
+        + delayHours * 60
         + duration;
 
 
-    document
-        .getElementById("washResult")
-        .classList.add("visible");
-
-
-    document
-        .getElementById("washDelay")
+    document.getElementById("washDelay")
         .textContent =
-            delayHours === 0
-                ? "Без отсрочки"
-                : `${delayHours} ч`;
+        delayHours === 0
+            ? "Без отсрочки"
+            : `${delayHours} ч`;
 
 
-    document
-        .getElementById("washProgram")
+    document.getElementById("washFinish")
         .textContent =
-            formatDuration(duration);
-
-
-    document
-        .getElementById("washFinish")
-        .textContent =
-            minutesToTime(actualFinish);
-
-
-    document
-        .getElementById("washDesired")
-        .textContent =
-            targetValue;
+        minutesToTime(actualFinish);
 
 }
 
 
-
-// ==========================================================
-// ПОСУДОМОЕЧНАЯ МАШИНА
-// ==========================================================
+// ============================================================
+// ПОСУДОМОЙКА
+// ============================================================
 
 function calculateDish() {
 
@@ -1160,25 +1285,32 @@ function calculateDish() {
 
     if (!targetValue) {
 
-        alert("Укажи время окончания мойки.");
-
         return;
 
     }
 
 
-    const programSelect =
+    const select =
         document.getElementById("dishProgram");
 
 
     const programMinutes =
-        Number(programSelect.value);
+        Number(select.value);
 
 
     const programName =
-        programSelect.options[
-            programSelect.selectedIndex
+        select.options[
+            select.selectedIndex
         ].text;
+
+
+    const safetyMargin =
+        30;
+
+
+    const totalDuration =
+        programMinutes
+        + safetyMargin;
 
 
     const now =
@@ -1189,9 +1321,6 @@ function calculateDish() {
         timeToMinutes(targetValue);
 
 
-    // Если время уже прошло —
-    // считаем следующий день.
-
     if (target <= now) {
 
         target += 1440;
@@ -1199,46 +1328,37 @@ function calculateDish() {
     }
 
 
-    // Запас 30 минут.
-
-    const safetyMargin = 30;
-
-
-    // Полное расчётное время.
-
-    const totalDuration =
-        programMinutes
-        + safetyMargin;
-
-
-    // ======================================================
-    // Проверяем отсрочки 3 / 6 / 9 часов
-    // ======================================================
-
     const possibleDelays = [
-        180,
+        540,
         360,
-        540
+        180
     ];
 
 
-    let selectedDelay = null;
+    let selectedDelay =
+        null;
 
+
+    /*
+        Ищем САМУЮ ПОЗДНЮЮ подходящую отсрочку.
+
+        Например:
+
+        3 часа  → подходит
+        6 часов → подходит
+
+        выбираем 3 часа,
+
+        потому что нет смысла запускать машину
+        раньше, если она и с 3 часами успевает.
+    */
 
     for (const delay of possibleDelays) {
 
-        const finish =
+        const safeFinish =
             now
             + delay
-            + programMinutes;
-
-
-        // Проверяем с учётом
-        // 30 минут запаса.
-
-        const safeFinish =
-            finish
-            + safetyMargin;
+            + totalDuration;
 
 
         if (safeFinish <= target) {
@@ -1252,52 +1372,43 @@ function calculateDish() {
     }
 
 
-    document
-        .getElementById("dishResult")
-        .classList.add("visible");
+    const result =
+        document.getElementById("dishResult");
 
 
-    document
-        .getElementById("dishProgramName")
+    result.classList.add("visible");
+
+
+    document.getElementById("dishProgramName")
         .textContent =
-            programName;
+        programName;
 
 
-    document
-        .getElementById("dishDuration")
+    document.getElementById("dishDuration")
         .textContent =
-            formatDuration(programMinutes);
+        formatDuration(programMinutes);
 
 
-    document
-        .getElementById("dishTotal")
+    document.getElementById("dishTotal")
         .textContent =
-            formatDuration(totalDuration);
+        formatDuration(totalDuration);
 
 
-    document
-        .getElementById("dishDesired")
+    document.getElementById("dishDesired")
         .textContent =
-            targetValue;
+        targetValue;
 
-
-
-    // ======================================================
-    // Если подходящей отсрочки нет
-    // ======================================================
 
     if (selectedDelay === null) {
 
-        document
-            .getElementById("dishDelay")
+        document.getElementById("dishDelay")
             .textContent =
-                "Не успеет";
+            "Не успеет";
 
 
-        document
-            .getElementById("dishFinish")
+        document.getElementById("dishFinish")
             .textContent =
-                "Нет подходящей отсрочки";
+            "Нет подходящей отсрочки";
 
 
         return;
@@ -1305,34 +1416,27 @@ function calculateDish() {
     }
 
 
-
-    // Реальное окончание программы
-    // с учётом выбранной отсрочки.
-
     const actualFinish =
         now
         + selectedDelay
         + programMinutes;
 
 
-    document
-        .getElementById("dishDelay")
+    document.getElementById("dishDelay")
         .textContent =
-            `${selectedDelay / 60} ч`;
+        `${selectedDelay / 60} ч`;
 
 
-    document
-        .getElementById("dishFinish")
+    document.getElementById("dishFinish")
         .textContent =
-            minutesToTime(actualFinish);
+        minutesToTime(actualFinish);
 
 }
 
 
-
-// ==========================================================
+// ============================================================
 // ХЛЕБОПЕЧКА
-// ==========================================================
+// ============================================================
 
 function calculateBread() {
 
@@ -1341,8 +1445,6 @@ function calculateBread() {
 
 
     if (!targetValue) {
-
-        alert("Укажи время готовности хлеба.");
 
         return;
 
@@ -1357,9 +1459,6 @@ function calculateBread() {
         timeToMinutes(targetValue);
 
 
-    // Если время уже прошло —
-    // считаем следующий день.
-
     if (target <= now) {
 
         target += 1440;
@@ -1367,16 +1466,12 @@ function calculateBread() {
     }
 
 
-    // Таймер хлебопечки =
-    // ОБЩЕЕ время до готовности.
-
     const exactTime =
         target - now;
 
 
-    // Шаг 10 минут.
-    // Округляем вниз,
-    // чтобы не опоздать.
+    // Шаг хлебопечки — 10 минут.
+    // Округляем вниз, чтобы не опоздать.
 
     const timerMinutes =
         Math.floor(exactTime / 10) * 10;
@@ -1386,35 +1481,67 @@ function calculateBread() {
         now + timerMinutes;
 
 
-    document
-        .getElementById("breadResult")
+    document.getElementById("breadResult")
         .classList.add("visible");
 
 
-    document
-        .getElementById("breadDelay")
+    document.getElementById("breadDelay")
         .textContent =
-            formatDuration(timerMinutes);
+        formatDuration(timerMinutes);
 
 
-    document
-        .getElementById("breadNow")
+    document.getElementById("breadNow")
         .textContent =
-            minutesToTime(now);
+        minutesToTime(now);
 
 
-    document
-        .getElementById("breadDesired")
+    document.getElementById("breadDesired")
         .textContent =
-            targetValue;
+        targetValue;
 
 
-    document
-        .getElementById("breadFinish")
+    document.getElementById("breadFinish")
         .textContent =
-            minutesToTime(actualFinish);
+        minutesToTime(actualFinish);
 
 }
+
+
+// ============================================================
+// АВТОМАТИЧЕСКИЙ РАСЧЁТ
+// ============================================================
+
+document
+    .getElementById("washTarget")
+    .addEventListener("change", calculateWash);
+
+document
+    .getElementById("washHours")
+    .addEventListener("input", calculateWash);
+
+document
+    .getElementById("washMinutes")
+    .addEventListener("input", calculateWash);
+
+
+document
+    .getElementById("dishTarget")
+    .addEventListener("change", calculateDish);
+
+document
+    .getElementById("dishProgram")
+    .addEventListener("change", calculateDish);
+
+document
+    .getElementById("breadTarget")
+    .addEventListener("change", calculateBread);
+
+
+// ============================================================
+// ПЕРВЫЙ РАСЧЁТ
+// ============================================================
+
+calculateWash();
 
 </script>
 
